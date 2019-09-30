@@ -1,4 +1,4 @@
-Name
+resty-etcdv2
 ====
 
 [resty-etcd](https://github.com/iresty/lua-resty-etcd) Nonblocking Lua etcd driver library for OpenResty, this module supports etcd API v2.
