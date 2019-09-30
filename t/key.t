@@ -362,7 +362,7 @@ res: nil err: opts.password must be string or ignore
     location /t {
         content_by_lua_block {
             local etcd, err = require "resty.etcd" .new({
-                "http://localhost:2379", 
+                "http://localhost:12379", 
                 "http://localhost:22379",
                 "http://localhost:32379",
             })
