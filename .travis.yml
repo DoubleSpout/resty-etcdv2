@@ -45,4 +45,6 @@ script:
   - go get github.com/mattn/goreman
   - wget https://raw.githubusercontent.com/DoubleSpout/resty-etcdv2/master/Procfile
   - goreman -f ./Procfile start > goreman.log 2>&1 &
+  - sleep 1
+  - cat goreman.log
   - make test jobs=$JOBS
