@@ -3,7 +3,7 @@ Name
 
 [resty-etcd](https://github.com/iresty/lua-resty-etcd) Nonblocking Lua etcd driver library for OpenResty, this module supports etcd API v2.
 
-[![Build Status](https://travis-ci.org/iresty/lua-resty-etcd.svg?branch=master)](https://travis-ci.org/iresty/lua-resty-etcd)
+[![Build Status](https://travis-ci.org/DoubleSpout/resty-etcdv2.svg?branch=master)](https://github.com/DoubleSpout/resty-etcdv2)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/iresty/lua-resty-etcd/blob/master/LICENSE)
 
 Table of Contents
