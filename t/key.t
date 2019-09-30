@@ -314,7 +314,7 @@ all done
     location /t {
         content_by_lua_block {
             local etcd, err = require "resty.etcd" .new({
-                host = false
+                host = true
             })
             ngx.say("res: ", res, " err: ", err)
         }
@@ -352,7 +352,7 @@ GET /t
 [error]
 --- response_body
 res: nil err: opts.user must be string or ignore
-res: nil err: opts.user must be string or ignore
+res: nil err: opts.password must be string or ignore
 
 
 
@@ -393,6 +393,52 @@ GET /t
 checked error msg as expect: Key not found
 all done
 
+
+
+=== TEST 13: cluster set + delete + get
+--- http_config eval: $::HttpConfig
+--- config
+    location /t {
+        content_by_lua_block {
+            local etcd, err = require "resty.etcd" .new({
+                "http://localhost:2379", 
+                "http://localhost:22379",
+                "http://localhost:32379",
+                "http://localhost:42379",
+            })
+            check_res(etcd, err)
+
+            local res, err = etcd:set("/test", {a = "abc"})
+            check_res(res, err)
+
+            ngx.sleep(0.5)
+
+            res, err = etcd:get("/test")
+            check_res(res, err)
+
+            ngx.sleep(0.5)
+
+            res, err = etcd:get("/test")
+            check_res(res, err)
+
+            ngx.sleep(0.5)
+
+            res, err = etcd:get("/test")
+            check_res(res, err)
+
+            ngx.sleep(0.5)
+
+            -- ngx.log(ngx.ERR, "data: ", require("cjson").encode(data.body))
+            ngx.say("all done")
+        }
+    }
+--- request
+GET /t
+--- no_error_log
+[error]
+--- response_body
+res: nil err: fail request to:  http://localhost:42379
+all done
 
 
 

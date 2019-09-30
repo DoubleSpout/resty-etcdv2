@@ -43,5 +43,6 @@ script:
   # run etcd local cluster, startup at localhost:2379, localhost:22379, and localhost:32379
   # see more https://github.com/etcd-io/etcd/blob/master/Documentation/dev-guide/local_cluster.md
   - go get github.com/mattn/goreman
+  - wget https://raw.githubusercontent.com/etcd-io/etcd/master/Procfile
   - goreman -f Procfile start
   - make test jobs=$JOBS
