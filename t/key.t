@@ -376,7 +376,7 @@ res: nil err: opts.password must be string or ignore
             check_res(etcd, err)
 
 
-            ngx.say("all done")
+            ngx.print("all done")
         }
     }
 --- request
