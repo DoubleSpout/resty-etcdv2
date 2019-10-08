@@ -388,7 +388,7 @@ res: nil err: opts.password must be string or ignore
             local data, err = etcd:get("/test")
             check_res(data, err, nil, "Key not found")
 
-            ngx.print("all done")
+            ngx.say("all done")
         }
     }
 --- request
