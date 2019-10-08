@@ -383,6 +383,11 @@ res: nil err: opts.password must be string or ignore
             res, err = etcd:delete("/test")
             check_res(res, err)
 
+            ngx.sleep(1)
+
+            local data, err = etcd:get("/test")
+            check_res(data, err, nil, "Key not found")
+
             ngx.print("all done")
         }
     }
