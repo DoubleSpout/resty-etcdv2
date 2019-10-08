@@ -396,4 +396,5 @@ GET /t
 --- no_error_log
 [error]
 --- response_body
+checked error msg as expect: Key not found
 all done
