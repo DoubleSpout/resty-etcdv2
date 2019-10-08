@@ -372,19 +372,19 @@ res: nil err: opts.password must be string or ignore
 
             local res, err = etcd:set("/test", {a = "abc"})
             ngx.say(type(res) .. err)
-            # check_res(res, err)
+            -- check_res(res, err)
 
-            # ngx.sleep(0.1)
+            -- ngx.sleep(0.1)
 
-            # res, err = etcd:delete("/test")
-            # check_res(res, err)
+            -- res, err = etcd:delete("/test")
+            -- check_res(res, err)
 
-            # ngx.sleep(0.1)
+            -- ngx.sleep(0.1)
 
-            # local data, err = etcd:get("/test")
-            # check_res(data, err, nil, "Key not found")
+            -- local data, err = etcd:get("/test")
+            -- check_res(data, err, nil, "Key not found")
 
-            # -- ngx.log(ngx.ERR, "data: ", require("cjson").encode(data.body))
+            -- -- ngx.log(ngx.ERR, "data: ", require("cjson").encode(data.body))
             ngx.say("all done")
         }
     }
