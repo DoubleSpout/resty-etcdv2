@@ -346,6 +346,8 @@ res: nil err: opts.host must be string or table
                 password = true,
             })
             ngx.print("res: ", res, " err: ", err)
+
+            ngx.print("\n")
         }
     }
 --- request
@@ -354,3 +356,5 @@ GET /t
 [error]
 --- response_body
 res: nil err: opts.user must be string or ignore
+res: nil err: opts.password must be string or ignore
+--- timeout: 5
