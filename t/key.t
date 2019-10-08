@@ -375,20 +375,7 @@ res: nil err: opts.password must be string or ignore
             })
             check_res(etcd, err)
 
-            local res, err = etcd:set("/test", {a = "abc"})
-            check_res(res, err)
 
-            ngx.sleep(1)
-
-            --res, err = etcd:delete("/test")
-            --check_res(res, err)
-
-            --ngx.sleep(1)
-
-            --local data, err = etcd:get("/test")
-            --check_res(data, err, nil, "Key not found")
-
-            -- ngx.log(ngx.ERR, "data: ", require("cjson").encode(data.body))
             ngx.say("all done")
         }
     }
@@ -398,4 +385,3 @@ GET /t
 [error]
 --- response_body
 all done
---- timeout: 5
