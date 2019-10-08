@@ -339,7 +339,13 @@ res: nil err: opts.host must be string or table
             })
             ngx.print("res: ", res, " err: ", err)
 
+            ngx.print("\n")
 
+            local etcd, err = require "resty.etcd" .new({
+                user = "user",
+                password = true,
+            })
+            ngx.print("res: ", res, " err: ", err)
         }
     }
 --- request
