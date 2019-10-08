@@ -375,6 +375,13 @@ res: nil err: opts.password must be string or ignore
             })
             check_res(etcd, err)
 
+            local res, err = etcd:set("/test", {a = "abc"})
+            check_res(res, err)
+
+            ngx.sleep(1)
+
+            res, err = etcd:delete("/test")
+            check_res(res, err)
 
             ngx.print("all done")
         }
