@@ -371,11 +371,16 @@ res: nil err: opts.password must be string or ignore
                     "http://127.0.0.1:12379", 
                     "http://127.0.0.1:22379",
                     "http://127.0.0.1:32379",
-                }
+                },
+                user = 'root',
+                password = 'abc123',
             })
             check_res(etcd, err)
 
             local res, err = etcd:set("/test", {a = "abc"})
+            check_res(res, err)
+
+            local res, err = etcd:get("/test")
             check_res(res, err)
 
             ngx.sleep(1)
