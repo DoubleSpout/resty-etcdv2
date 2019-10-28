@@ -403,7 +403,7 @@ res: nil err: opts.password must be string or ignore
                 password = 'wrong_password',
             })
             data, err = etcd:get("/test")
-            check_res(data, err, nil, "Key not found")
+            check_res(data, err, nil, nil, "The request requires user authentication")
 
             ngx.say("all done")
         }
@@ -414,5 +414,5 @@ GET /t
 [error]
 --- response_body
 checked error msg as expect: Key not found
-checked error msg as expect: Key not found
+checked error msg as expect: The request requires user authentication
 all done
