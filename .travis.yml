@@ -49,7 +49,6 @@ script:
   - sudo service etcd start
   - goreman -f ./t/Procfile start > goreman.log 2>&1 &
   - sleep 1
-  - curl -X "PUT" "${AUTH_ENDPOINT}/v2/auth/users/root" -H "Content-Type: application/json; charset=utf-8" -d $"{\"user\":\"${AUTH_USER}\",\"password\":\"${AUTH_PWD}\"}"
-  - curl -X "PUT" "${AUTH_ENDPOINT}/v2/auth/enable"
-  - curl -X "PUT" "${AUTH_ENDPOINT}/v2/auth/roles/guest" -H "Content-Type: text/plain; charset=utf-8" -u "${AUTH_USER}:${AUTH_PWD}" -d $'{"role":"guest","revoke":{"kv":{"write": ["/*"]}}}'
+  - chmod +x ./t/add-auth.sh
+  - ./t/add-auth.sh
   - make test jobs=$JOBS
