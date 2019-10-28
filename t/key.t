@@ -393,6 +393,18 @@ res: nil err: opts.password must be string or ignore
             local data, err = etcd:get("/test")
             check_res(data, err, nil, "Key not found")
 
+            etcd, err = require "resty.etcd" .new({
+                host = {
+                    "http://127.0.0.1:12379", 
+                    "http://127.0.0.1:22379",
+                    "http://127.0.0.1:32379",
+                },
+                user = 'wrong_user_name',
+                password = 'wrong_password',
+            })
+            data, err = etcd:get("/test")
+            check_res(data, err, nil, "Key not found")
+
             ngx.say("all done")
         }
     }
@@ -401,5 +413,6 @@ GET /t
 --- no_error_log
 [error]
 --- response_body
+checked error msg as expect: Key not found
 checked error msg as expect: Key not found
 all done
